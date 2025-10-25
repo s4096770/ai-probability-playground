@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/nadialaeeq/ai-probability-playground/venv"
+VIRTUAL_ENV="/Users/nadialaeeq/Desktop/assessments/ai-probability-playground/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
