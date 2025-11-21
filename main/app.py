@@ -12,6 +12,7 @@ from visuals import (
 
 st.set_page_config(
     page_title="Probabilistic Risk Assessment Engine",
+    page_icon="🎲",
     layout="wide",
 )
 
@@ -85,8 +86,8 @@ def random_event_layout():
         st.markdown(
             """
             **What this shows:**  
-            As trial count increases, observed frequencies gradually stabilise and begin to reflect their theoretical values.
-            This illustrates the law of large numbers in action.
+            As trial count increases, observed frequencies stabilise and begin to reflect their theoretical values.
+            This demonstrates the law of large numbers in action.
             """
         )
 
