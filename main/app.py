@@ -19,7 +19,14 @@ st.set_page_config(
 def show_header():
     st.title("📊 Probabilistic Risk Assessment Engine")
     st.caption(
-        "Model and visualise uncertainty for random events and basic cyber risk scenarios."
+        "An interactive system for exploring uncertainty, probability, and how risk behaves in dynamic environments."
+    )
+
+    st.markdown(
+        """
+        This engine allows you to observe how random systems behave over time and how protective measures alter risk exposure.  
+        It turns abstract probability into something visible, interpretable, and intuitive.
+        """
     )
 
 
@@ -34,6 +41,9 @@ def sidebar_controls():
 
 def random_event_layout():
     st.subheader("🎲 Random Event Simulation")
+    st.markdown(
+        "Explore how outcomes distribute over large trial sets and how empirical results converge toward theoretical probability."
+    )
 
     col_left, col_right = st.columns([2, 3])
 
@@ -47,11 +57,10 @@ def random_event_layout():
             value=1_000,
             step=10,
         )
-
         run = st.button("Run Simulation")
 
     if not run:
-        st.info("Configure your experiment and click **Run Simulation**.")
+        st.info("Configure your experiment and click **Run Simulation** to begin.")
         return
 
     if sim_type == "Coin flips":
@@ -73,6 +82,14 @@ def random_event_layout():
         )
         st.pyplot(fig, clear_figure=True)
 
+        st.markdown(
+            """
+            **What this shows:**  
+            As trial count increases, observed frequencies gradually stabilise and begin to reflect their theoretical values.
+            This illustrates the law of large numbers in action.
+            """
+        )
+
     st.markdown("### 📋 Summary Statistics")
     st.dataframe(results_df, use_container_width=True)
 
@@ -84,6 +101,9 @@ def random_event_layout():
 
 def threat_risk_layout():
     st.subheader("🛡️ Threat Risk Assessment")
+    st.markdown(
+        "Simulate how defensive strength influences the probability of a successful attack across multiple scenarios."
+    )
 
     col_left, col_right = st.columns([2, 3])
 
@@ -117,7 +137,7 @@ def threat_risk_layout():
         run = st.button("Run Risk Simulation")
 
     if not run:
-        st.info("Adjust the scenario parameters and click **Run Risk Simulation**.")
+        st.info("Adjust the scenario parameters and click **Run Risk Simulation** to analyse risk.")
         return
 
     scenarios_df, summary = simulate_threat_scenarios(
@@ -133,6 +153,14 @@ def threat_risk_layout():
             title="Estimated probability of a successful attack",
         )
         st.pyplot(fig, clear_figure=True)
+
+        st.markdown(
+            """
+            **What this shows:**  
+            Increasing defensive strength reduces overall attack success probability,
+            demonstrating how protective systems shift risk dynamics.
+            """
+        )
 
     st.markdown("### 📄 Scenario Outcomes (sample)")
     st.dataframe(scenarios_df.head(20), use_container_width=True)
